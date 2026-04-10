@@ -21,15 +21,19 @@
             </div>
 
             <div class="justify-center flex-1 hidden max-w-xs md:flex">
-                <form action="" method="POST" class="w-full font-[Poppins]">
-                    <div class="relative">
-                        <input type="text"
-                               placeholder="Search menu..."
-                               class="w-full px-4 py-2 pl-10 text-sm transition-all border shadow-sm text-slate-900 lg:text-base bg-slate-50 rounded-xl border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 placeholder:text-slate-400" />
-                        <x-mdi-magnify class="absolute w-4 h-4 -translate-y-1/2 left-3 top-1/2 text-slate-400" />
-                    </div>
-                </form>
-            </div>
+    {{-- Ubah action ke route search dan method ke GET --}}
+    <form action="{{ route('main.search') }}" method="GET" class="w-full font-[Poppins]">
+        <div class="relative">
+            {{-- Tambahkan name="query" pada input --}}
+            <input type="text"
+                   name="query"
+                   value="{{ request('query') }}"
+                   placeholder="Search books..."
+                   class="w-full px-4 py-2 pl-10 text-sm transition-all border shadow-sm text-slate-900 lg:text-base bg-slate-50 rounded-xl border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 placeholder:text-slate-400" />
+            <x-mdi-magnify class="absolute w-4 h-4 -translate-y-1/2 left-3 top-1/2 text-slate-400" />
+        </div>
+    </form>
+</div>
 
             <div class="flex items-center gap-4 sm:gap-3 lg:gap-4">
                 <div class="items-center hidden gap-2 md:flex lg:gap-6">
@@ -48,9 +52,9 @@
                         <a href="{{ route('main.index') }}" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">Home</a>
                         <a href="#" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">Shop</a>
                         <a href="{{ route('wishlist.index') }}" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">Wishlist</a>
-                        {{-- <a href="{{ route('orders.user') }}" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">Orders</a> --}}
-                        {{-- <a href="{{ route('contact.index') }}" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">Contact</a> --}}
-                        {{-- <a href="{{ route('main.about') }}" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">About</a> --}}
+                        <a href="{{ route('orders.user') }}" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">Orders</a>
+                        <a href="{{ route('contact.index') }}" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">Contact</a>
+                        <a href="{{ route('main.about') }}" class="font-medium transition text-slate-600 hover:text-indigo-600 whitespace-nowrap">About</a>
 
                         @auth
                             <div class="flex items-center gap-2 ml-2">
@@ -91,6 +95,15 @@
 
     <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-slate-100 font-[Poppins]">
         <div class="px-4 py-6 space-y-4 shadow-inner">
+            <form action="{{ route('main.search') }}" method="GET" class="relative">
+            <input type="text"
+                   name="query"
+                   value="{{ request('query') }}"
+                   placeholder="Search books..."
+                   class="w-full px-4 py-2 pl-10 text-sm border rounded-lg text-slate-900 bg-slate-50 border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20" />
+            <x-mdi-magnify class="absolute w-4 h-4 -translate-y-1/2 left-3 top-1/2 text-slate-400" />
+        </form>
+
             <div class="relative">
                 <input type="text" placeholder="Search menu..."
                        class="w-full px-4 py-2 pl-10 text-sm border rounded-lg text-slate-900 bg-slate-50 border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20" />

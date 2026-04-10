@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'welcome'])->name('main.welcome');
 Route::get('/home', [MainController::class, 'index'])->name('main.index');
 Route::get('/about', [MainController::class, 'about'])->name('main.about');
+Route::get('/search', [MainController::class, 'search'])->name('main.search');
 
 // Routes For Authentication
 Route::get('/register', [AuthController::class, 'showRegister'])->name('show.register');
@@ -72,6 +74,11 @@ Route::middleware('auth')->group(function () {
     // TODO: ini harusnya admin
     Route::get('/contacts', [ContactController::class, 'adminIndex'])->name('admin.contacts.index');
     Route::post('/contacts/{contact}/reply', [ContactController::class, 'reply'])->name('admin.contacts.reply');
+
+    Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+    Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 });
 
 

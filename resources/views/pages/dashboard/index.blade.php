@@ -15,11 +15,11 @@
                     </div>
 
                     <div class="flex flex-wrap items-center gap-3">
-                        {{-- <a href="{{ route('admin.contacts.index') }}"
+                        <a href="{{ route('admin.contacts.index') }}"
                             class="inline-flex items-center px-4 py-2 text-xs font-bold tracking-widest text-green-600 uppercase transition-all border-2 border-green-600 rounded-xl hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                             <x-mdi-message class="w-4 h-4 mr-2" />
                             Messages
-                        </a> --}}
+                        </a>
                         {{-- Button Recent Orders --}}
                         <a href="{{ route('orders.index') }}"
                             class="inline-flex items-center px-4 py-2 text-xs font-bold tracking-widest uppercase transition-all border-2 text-zinc-600 border-zinc-600 rounded-xl hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2">
@@ -30,7 +30,13 @@
                         <a href="{{ route('categories.index') }}"
                             class="inline-flex items-center px-4 py-2 text-xs font-bold tracking-widest text-indigo-600 uppercase transition-all border-2 border-indigo-600 rounded-xl hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                             <x-mdi-shape-outline class="w-4 h-4 mr-2" />
-                            Category Management
+                            Categories
+                        </a>
+
+                        <a href="{{ route('admin.users.index') }}"
+                            class="inline-flex items-center px-4 py-2 text-xs font-bold tracking-widest uppercase transition-all border-2 text-cyan-600 border-cyan-600 rounded-xl hover:bg-cyan-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
+                            <x-mdi-account class="w-4 h-4 mr-2" />
+                            Users
                         </a>
 
                         <a href="{{ route('products.create') }}"

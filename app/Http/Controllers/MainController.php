@@ -24,4 +24,19 @@ class MainController extends Controller
     {
         return view('pages.main.about');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Cari produk yang namanya mirip atau kategori namanya mirip
+        $products = Product::with('category')
+            ->where('name', 'LIKE', "%{$query}%")
+            ->orWhereHas('category', function ($q) use ($query) {
+                $q->where('name', 'LIKE', "%{$query}%");
+            })
+            ->get();
+
+        return view('pages.main.search', compact('products', 'query'));
+    }
 }
